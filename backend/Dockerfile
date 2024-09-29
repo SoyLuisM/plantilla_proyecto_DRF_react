@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE ${EXPOSE_PORT}
 
-CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:${EXPOSE_PORT}"]
+CMD ["sh", "entrypoint.sh"]
