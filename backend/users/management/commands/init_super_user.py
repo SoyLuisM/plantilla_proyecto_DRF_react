@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class Command(BaseCommand):
-    help = "my help XD"
+    help = "Este escript crea un nuevo usuario adminstrador: python manage.py init_super_user username email password"
 
     def add_arguments(self, parser):
         parser.add_argument("username", type=str)

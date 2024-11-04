@@ -5,17 +5,27 @@ services:
       dockerfile: Dockerfile
     # volumes:
     #   - .:/app
-    container_name: login_app
+    container_name: login_backend_app
     depends_on:
       - db
     ports:
-      - ${BACKEND_EXTERN_PORT}:${BACKEND_INTER_PORT}
+      - ${BACKEND_EXTERNAL_PORT}:${BACKEND_INTERAL_PORT}
     environment:
-      - EXPOSE_PORT=${BACKEND_INTER_PORT}
+      - EXPOSE_PORT=${BACKEND_INTERAL_PORT}
       - SUPER_USER_NAME=${BACKEND_SUPER_USER_NAME}
       - SUPER_USER_EMAIL=${BACKEND_SUPER_USER_EMAIL}
       - SUPER_USER_PASSWORD=${BACKEND_SUPER_USER_PASSWORD}
-
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: login_frontend_app
+    depends_on:
+      - backend
+    ports:
+      - ${FRONTEND_EXTERNAL_PORT}:${FRONTEND_INTERNAL_PORT}
+    environment:
+      - EXPOSE_PORT=${FRONTEND_INTERNAL_PORT}
   db:
     container_name: ${POSTGRES_CONTAINER_NAME}
     image: postgres:16-alpine
