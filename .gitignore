@@ -6,3 +6,5 @@ pgadmin/
 postgres/
 migrations/
 static/
+public/
+assets/
