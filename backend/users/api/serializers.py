@@ -70,3 +70,4 @@ class UpdateProfileUserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+    
